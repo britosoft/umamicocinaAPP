@@ -5,7 +5,12 @@ class DetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: CustomScrollView(
-      slivers: [_CustomAppBar()],
+      slivers: [
+        _CustomAppBar(),
+        SliverList(
+          delegate: SliverChildListDelegate([_PosterAndTitle()]),
+        )
+      ],
     ));
   }
 }
@@ -14,13 +19,13 @@ class _CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      backgroundColor: Colors.green,
+      //: Colors.green,
       expandedHeight: 200,
       floating: false,
       pinned: true,
       flexibleSpace: FlexibleSpaceBar(
-        //centerTitle: true,
-        // title: Text('Umami la ruta del sabor'),
+        centerTitle: true,
+        //title: Text('Umami la ruta del sabor'),
         background: FadeInImage(
             placeholder: AssetImage('assets/jar-loading.gif'),
             image: NetworkImage(
@@ -28,5 +33,21 @@ class _CustomAppBar extends StatelessWidget {
             fit: BoxFit.cover),
       ),
     );
+  }
+}
+
+class _PosterAndTitle extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        margin: EdgeInsets.only(top: 20),
+        padding: EdgeInsets.symmetric(horizontal: 20),
+        child: Column(children: [
+          Text('paella de camarones',
+              style: Theme.of(context).textTheme.headline5,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 2),
+          Text('3.35'),
+        ]));
   }
 }

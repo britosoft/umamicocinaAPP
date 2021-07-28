@@ -24,7 +24,6 @@ class ProductScreen extends StatelessWidget {
 
             //listado horizontal
             MovieSlider(),
-
           ],
         )));
   }
