@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-class MovieSlider extends StatelessWidget {
+class Categoria_sandwich extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -14,7 +14,7 @@ class MovieSlider extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
             child: Text(
-              'Paellas',
+              'Sandwich',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
           ),
@@ -23,7 +23,7 @@ class MovieSlider extends StatelessWidget {
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: 20,
-              itemBuilder: (_, int index) => _MoviePoster(),
+              itemBuilder: (_, int index) => _Sandwich(),
             ),
           )
         ],
@@ -32,7 +32,7 @@ class MovieSlider extends StatelessWidget {
   }
 }
 
-class _MoviePoster extends StatelessWidget {
+class _Sandwich extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -50,7 +50,7 @@ class _MoviePoster extends StatelessWidget {
               child: FadeInImage(
                 placeholder: AssetImage('assets/no-image.jpg'),
                 image: NetworkImage(
-                    'https://cdn.pixabay.com/photo/2017/04/04/11/55/paella-2201193_960_720.jpg'),
+                    'https://cdn.pixabay.com/photo/2020/03/21/11/17/burger-4953465__480.jpg'),
                 width: 250,
                 height: 210,
                 fit: BoxFit.cover,
@@ -66,7 +66,7 @@ class _MoviePoster extends StatelessWidget {
           ),
           SizedBox(height: 5),
           Text(
-            '3.25 ',
+            r' $ 3.25 ',
             overflow: TextOverflow.ellipsis,
             style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
           )

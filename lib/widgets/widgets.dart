@@ -1,5 +1,11 @@
 export 'package:umamicocina/widgets/auth_background.dart';
 export 'package:umamicocina/widgets/card_container.dart';
 export 'package:umamicocina/widgets/card_widget.dart';
-export 'package:umamicocina/widgets/movie_slider.dart';
+export 'package:umamicocina/widgets/entradas_escreen.dart';
+export 'package:umamicocina/widgets/platos_fuerte_escreen.dart';
+export 'package:umamicocina/widgets/ceviche_y_ensaladas_escreen.dart';
+export 'package:umamicocina/widgets/bebidas_escreen.dart';
+export 'package:umamicocina/widgets/sandwich_escreen.dart';
+export 'package:umamicocina/widgets/ceviche_y_ensaladas_escreen.dart';
 export 'package:umamicocina/widgets/coverPage_widget.dart';
+export 'package:umamicocina/widgets/menu_screen.dart';

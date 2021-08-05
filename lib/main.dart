@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:umamicocina/screens/mis_pedidosScreen.dart';
 import 'package:umamicocina/screens/screen.dart';
 
 void main() => runApp(MyApp());
@@ -9,16 +10,19 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Ruta Umami ',
-      initialRoute: 'product',
+      initialRoute: 'home',
       routes: {
         'login': (_) => LoginScreen(),
         'home': (_) => HomeScreen(),
         'register': (_) => RegisterScreen(),
-        'product': (_) => ProductScreen(),
+        //'product': (_) => ProductScreen(),
         'details': (_) => DetailsScreen(),
+        'pedidos': (_) => MisPedidosScreen(),
       },
-      //theme: ThemeData.light().copyWith(
-      //appBarTheme: AppBarTheme(color: Colors.green)),
+      theme: ThemeData.light()
+          .copyWith(appBarTheme: AppBarTheme(color: Colors.green)),
     );
+    //theme: ThemeData.light().copyWith(
+    //appBarTheme: AppBarTheme(color: Colors.green)),
   }
 }

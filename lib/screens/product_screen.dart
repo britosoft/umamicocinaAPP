@@ -21,9 +21,12 @@ class ProductScreen extends StatelessWidget {
           children: [
             //TODO: Car product
             CoverPage(),
-
+            Categoria_entradas(),
+            Categorias_Platos_fuertes(),
+            Categoria_Ceviche_y_Ensalada(),
+            Categoria_sandwich(),
+            Categoria_bebidas()
             //listado horizontal
-            MovieSlider(),
           ],
         )));
   }
