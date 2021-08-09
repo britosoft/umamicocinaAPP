@@ -17,7 +17,7 @@ class ProductScreen extends StatelessWidget {
           ],
         ),
         body: SingleChildScrollView(
-            child: Column(
+            child: Wrap(
           children: [
             //TODO: Car product
             CoverPage(),

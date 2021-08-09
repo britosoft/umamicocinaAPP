@@ -57,14 +57,12 @@ class _Platos_fuertes extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 5),
           Text(
             'Paellas de marisco ',
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             textAlign: TextAlign.center,
           ),
-          SizedBox(height: 5),
           Text(
             r' $ 3.25 ',
             overflow: TextOverflow.ellipsis,

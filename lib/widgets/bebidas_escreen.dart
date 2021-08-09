@@ -18,7 +18,6 @@ class Categoria_bebidas extends StatelessWidget {
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
           ),
-          SizedBox(height: 7),
           Expanded(
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
@@ -56,14 +55,12 @@ class _Bebidas extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 5),
           Text(
             'Paellas de marisco ',
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             textAlign: TextAlign.center,
           ),
-          SizedBox(height: 5),
           Text(
             r' $ 3.25 ',
             overflow: TextOverflow.ellipsis,

@@ -8,14 +8,16 @@ class DetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          _BackgroundImage(),
-          _DescriptionProduct(),
-          _Unidades(),
-          CantidadScreen(),
-          _Coment(),
-        ],
+      body: SingleChildScrollView(
+        child: Wrap(
+          children: [
+            _BackgroundImage(),
+            _DescriptionProduct(),
+            _Unidades(),
+            CantidadScreen(),
+            _Coment(),
+          ],
+        ),
       ),
     );
   }
@@ -44,9 +46,13 @@ class _DescriptionProduct extends StatelessWidget {
     return Container(
         margin: EdgeInsets.symmetric(vertical: 10),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('Paella de camarón',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                )),
             Text(
               r' $ 3.25',
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
@@ -99,7 +105,7 @@ class _Coment extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10)),
                   color: Colors.green,
-                  onPressed: () => Navigator.pushNamed(context, 'product'),
+                  onPressed: () => Navigator.pushNamed(context, 'home'),
                   child: const Text(r'Agregar a mi pedido $3.25',
                       style: TextStyle(color: Colors.white)),
                 ),
