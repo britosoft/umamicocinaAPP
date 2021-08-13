@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:umamicocina/screens/asking_screen.dart';
+import 'package:umamicocina/screens/checoutPedido_Screen.dart';
 import 'package:umamicocina/screens/mis_pedidosScreen.dart';
 import 'package:umamicocina/screens/screen.dart';
 
@@ -18,6 +20,8 @@ class MyApp extends StatelessWidget {
         //'product': (_) => ProductScreen(),
         'details': (_) => DetailsScreen(),
         'pedidos': (_) => MisPedidosScreen(),
+        'asking': (_) => Asking_Screen(),
+        'checout': (_) => checoutPedido_Screen()
       },
       theme: ThemeData.light()
           .copyWith(appBarTheme: AppBarTheme(color: Colors.green)),

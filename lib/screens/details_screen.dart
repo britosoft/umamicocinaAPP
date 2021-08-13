@@ -1,3 +1,4 @@
+import 'dart:collection';
 import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:umamicocina/screens/cantidad_screen.dart';
@@ -8,6 +9,7 @@ class DetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: SingleChildScrollView(
         child: Wrap(
           children: [
@@ -30,11 +32,16 @@ class _BackgroundImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FadeInImage(
-        placeholder: AssetImage('assets/no-image.jpg'),
-        image: NetworkImage(
-            'https://cdn.pixabay.com/photo/2017/04/04/11/55/paella-2201193_960_720.jpg'),
-        fit: BoxFit.cover);
+    return SafeArea(
+        child: Stack(
+      children: <Widget>[
+        FadeInImage(
+            placeholder: AssetImage('assets/no-image.jpg'),
+            image: NetworkImage(
+                'https://cdn.pixabay.com/photo/2017/04/04/11/55/paella-2201193_960_720.jpg'),
+            fit: BoxFit.cover)
+      ],
+    ));
   }
 }
 
@@ -44,21 +51,21 @@ class _DescriptionProduct extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: EdgeInsets.symmetric(vertical: 10),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('Paella de camarón',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                )),
-            Text(
-              r' $ 3.25',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
-          ],
-        ));
+        //margin: EdgeInsets.symmetric(vertical: 10),
+        child: Center(
+            child: Column(
+      children: [
+        Text('Paella de camarón',
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            )),
+        Text(
+          r' $ 3.25',
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        ),
+      ],
+    )));
   }
 }
 
@@ -105,7 +112,7 @@ class _Coment extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10)),
                   color: Colors.green,
-                  onPressed: () => Navigator.pushNamed(context, 'home'),
+                  onPressed: () => Navigator.pushNamed(context, 'asking'),
                   child: const Text(r'Agregar a mi pedido $3.25',
                       style: TextStyle(color: Colors.white)),
                 ),
@@ -113,5 +120,16 @@ class _Coment extends StatelessWidget {
             ],
           ),
         ));
+  }
+}
+
+class IconBack extends StatelessWidget {
+  const IconBack({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Icon(Icons.add, color: Colors.red),
+    );
   }
 }
