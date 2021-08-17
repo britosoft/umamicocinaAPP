@@ -14,8 +14,6 @@ class Asking_Screen extends StatelessWidget {
             BackIcon(),
             MiPedido(),
             FoodTruck(),
-            FoodTruck(),
-            FoodTruck(),
             SubTotal(),
             _AddButton(),
             SizedBox(height: 20),
@@ -148,10 +146,6 @@ class Producto extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   fontSize: 14,
                 )),
-            Text('Paella de camaron con ensalada mixta   ',
-                style: TextStyle(
-                  fontSize: 12,
-                )),
           ],
         ));
   }
@@ -283,7 +277,7 @@ class NextButton extends StatelessWidget {
             child: Column(
               children: [
                 MaterialButton(
-                    onPressed: () => Navigator.pushNamed(context, 'home'),
+                    onPressed: () => Navigator.pushNamed(context, 'sendOrder'),
                     child: const Text('Continuar',
                         style: TextStyle(color: Colors.white))),
               ],
