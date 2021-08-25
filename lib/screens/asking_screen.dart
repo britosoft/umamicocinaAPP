@@ -7,18 +7,21 @@ class Asking_Screen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            BackIcon(),
-            MiPedido(),
-            FoodTruck(),
-            SubTotal(),
-            _AddButton(),
-            SizedBox(height: 20),
-            NextButton()
-          ],
+      body: Container(
+        color: Colors.white,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              BackIcon(),
+              MiPedido(),
+              FoodTruck(),
+              SubTotal(),
+              _AddButton(),
+              SizedBox(height: 20),
+              NextButton()
+            ],
+          ),
         ),
       ),
     ));
@@ -76,10 +79,13 @@ class FoodTruck extends StatelessWidget {
       margin: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
       padding: EdgeInsets.symmetric(vertical: 5),
       height: 100,
-      decoration: BoxDecoration(
-        border: Border.all(width: 1, color: Colors.green),
-        borderRadius: BorderRadius.circular(10),
-      ),
+      decoration: BoxDecoration(boxShadow: [
+        BoxShadow(
+          color: Colors.black12,
+          offset: Offset(0, 4),
+          blurRadius: 3,
+        )
+      ], borderRadius: BorderRadius.circular(10)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [cantidad(), Producto(), Precio()],
@@ -110,28 +116,6 @@ class Franquicia extends StatelessWidget {
   }
 }
 
-class LogoFranquicia extends StatelessWidget {
-  const LogoFranquicia({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        margin: EdgeInsets.symmetric(horizontal: 10),
-        width: double.infinity,
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(10),
-            child: FadeInImage(
-              placeholder: AssetImage('assets/no-image.jpg'),
-              image: NetworkImage(
-                  'https://umamicocina.com/vistas/imagenes/logo/3.png'),
-              width: 100,
-            ),
-          ),
-        ]));
-  }
-}
-
 class Producto extends StatelessWidget {
   const Producto({Key? key}) : super(key: key);
 
@@ -139,12 +123,12 @@ class Producto extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         margin: EdgeInsets.symmetric(horizontal: 12),
-        child: Column(
+        child: Row(
           children: [
             Text('Paella de camaron',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 14,
+                  fontSize: 16,
                 )),
           ],
         ));
@@ -164,7 +148,7 @@ class cantidad extends StatelessWidget {
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 14,
-            ))
+            )),
       ],
     );
   }
@@ -176,9 +160,13 @@ class Precio extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [Text(r'$3.25')]));
+        child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Text(r'$3.25',
+          style: TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.bold,
+          ))
+    ]));
   }
 }
 
@@ -192,7 +180,13 @@ class SubTotal extends StatelessWidget {
         padding: EdgeInsets.symmetric(vertical: 5),
         height: 50,
         decoration: BoxDecoration(
-          border: Border.all(color: Colors.green),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black12,
+              offset: Offset(0, 4),
+              blurRadius: 3,
+            )
+          ],
           borderRadius: BorderRadius.circular(10),
         ),
         child: Row(
@@ -230,9 +224,7 @@ class SumNumber extends StatelessWidget {
         child: Row(
           children: [
             Text(r'$5.20',
-                style: TextStyle(
-                  fontSize: 12,
-                )),
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
           ],
         ));
   }
@@ -248,9 +240,9 @@ class _AddButton extends StatelessWidget {
             width: double.infinity,
             margin: EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
                 color: Colors.green[200],
-                border: Border.all(color: Colors.green),
-                borderRadius: BorderRadius.circular(20)),
+                boxShadow: []),
             child: Column(
               children: [
                 MaterialButton(
@@ -277,7 +269,8 @@ class NextButton extends StatelessWidget {
             child: Column(
               children: [
                 MaterialButton(
-                    onPressed: () => Navigator.pushNamed(context, 'sendOrder'),
+                    onPressed: () =>
+                        Navigator.pushNamed(context, 'formaDePago'),
                     child: const Text('Continuar',
                         style: TextStyle(color: Colors.white))),
               ],

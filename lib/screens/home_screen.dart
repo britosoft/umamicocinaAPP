@@ -19,6 +19,9 @@ class HomeScreen extends StatelessWidget {
           children: [
             //TODO: Car product
             CoverPage(),
+            SizedBox(height: 5),
+            Text('Productos',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             Categoria_entradas(),
             Categorias_Platos_fuertes(),
             Categoria_Ceviche_y_Ensalada(),
@@ -43,6 +46,13 @@ class HomeScreen extends StatelessWidget {
                     Navigator.pushNamed(context, 'pedidos');
                   }),
               ListTile(
+                  title: Text('Mis productos'),
+                  leading: Icon(Icons.image),
+                  onTap: () {
+                    Navigator.pushNamed(context, 'product');
+                    //Navigator.pop(context);
+                  }),
+              ListTile(
                   title: Text('Iniciar Sesión'),
                   leading: Icon(Icons.login),
                   onTap: () {
@@ -52,24 +62,5 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
         ));
-  }
-}
-
-class ProductScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.green,
-        title: Text('productos Umami'),
-        elevation: 0,
-        actions: [
-          IconButton(
-            icon: Icon(Icons.search_outlined),
-            onPressed: () {},
-          ),
-        ],
-      ),
-    );
   }
 }

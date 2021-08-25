@@ -6,3 +6,5 @@ import 'package:umamicocina/screens/mis_pedidosScreen.dart';
 import 'package:umamicocina/screens/checoutPedido_Screen.dart';
 import 'package:umamicocina/screens/asking_screen.dart';
 import 'package:umamicocina/screens/formaDePago_screen.dart';
+import 'package:umamicocina/screens/order_send.dart';
+import 'package:umamicocina/screens/product_screen.dart';

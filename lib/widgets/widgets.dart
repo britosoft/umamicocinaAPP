@@ -8,4 +8,5 @@ export 'package:umamicocina/widgets/bebidas_escreen.dart';
 export 'package:umamicocina/widgets/sandwich_escreen.dart';
 export 'package:umamicocina/widgets/ceviche_y_ensaladas_escreen.dart';
 export 'package:umamicocina/widgets/coverPage_widget.dart';
-export 'package:umamicocina/widgets/menu_screen.dart';
+export 'package:umamicocina/widgets/manager_producto_screen.dart';
+export 'package:umamicocina/widgets/add_product_screen.dart';

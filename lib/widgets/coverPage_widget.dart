@@ -1,10 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:umamicocina/screens/product_screen.dart';
 
 class CoverPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    title:
+
+    return Container(
+        width: double.infinity,
+        height: size.height * 0.3,
+        child: Stack(children: [
+          Cover(),
+          IconBack(),
+        ]));
+  }
+}
+
+class Cover extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
     return Container(
         width: double.infinity,
         height: size.height * 0.3,

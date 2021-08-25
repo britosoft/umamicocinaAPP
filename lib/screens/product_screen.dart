@@ -1,53 +1,82 @@
 import 'package:flutter/material.dart';
-import 'package:umamicocina/widgets/widgets.dart';
+import 'package:umamicocina/widgets/bebidas_escreen.dart';
+import 'package:umamicocina/widgets/ceviche_y_ensaladas_escreen.dart';
+import 'package:umamicocina/widgets/coverPage_widget.dart';
+import 'package:umamicocina/widgets/entradas_escreen.dart';
+import 'package:umamicocina/widgets/entradas_miproducto.dart';
+import 'package:umamicocina/widgets/platos_fuerte_escreen.dart';
+import 'package:umamicocina/widgets/sandwich_escreen.dart';
 
-class ProductScreen extends StatelessWidget {
+class MyProduct extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.green,
-          title: Text('productos Umami'),
-          elevation: 0,
-          actions: [
-            IconButton(
-              icon: Icon(Icons.search_outlined),
-              onPressed: () {},
-            ),
-          ],
-        ),
-        body: SingleChildScrollView(
-            child: Wrap(
-          children: [
-            //TODO: Car product
-            CoverPage(),
-            Categoria_entradas(),
-            Categorias_Platos_fuertes(),
-            Categoria_Ceviche_y_Ensalada(),
-            Categoria_sandwich(),
-            Categoria_bebidas()
-            //listado horizontal
-          ],
-        )));
+    return SafeArea(
+        child: Scaffold(
+      body: SingleChildScrollView(
+          child: Column(
+        children: [
+          //TODO: Car product
+          CoverPageProducto(),
+
+          SizedBox(height: 5),
+          Text('Mis Productos',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          Categoria_entradas_miProducto(),
+
+          //listado horizontal
+        ],
+      )),
+    ));
   }
 }
 
-class _CustomAppBar extends StatelessWidget {
+class CoverPageProducto extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SliverAppBar(
-      //backgroundColor: Colors.green,
-      expandedHeight: 200,
-      floating: false,
-      pinned: true,
-      flexibleSpace: FlexibleSpaceBar(
-        //centerTitle: true,
-        // title: Text('Umami la ruta del sabor'),
-        background: FadeInImage(
-            placeholder: AssetImage('assets/no-image.jpg'),
-            image: NetworkImage(
-                'https://cdn.pixabay.com/photo/2019/09/07/19/02/spanish-paella-4459519_960_720.jpg'),
-            fit: BoxFit.cover),
+    final size = MediaQuery.of(context).size;
+    title:
+    return Container(
+        width: double.infinity,
+        height: size.height * 0.3,
+        child: Stack(
+          children: [CoverPage(), IconSearch(), IconBack()],
+        ));
+  }
+}
+
+class IconSearch extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
+    return Container(
+        width: double.infinity,
+        height: size.height * 0.3,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Icon(Icons.search_outlined, color: Colors.white),
+          ],
+        ));
+  }
+}
+
+class IconBack extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
+    return Container(
+      width: double.infinity,
+      height: size.height * 0.3,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          IconButton(
+            onPressed: () => Navigator.of(context).pop(),
+            icon: Icon(Icons.arrow_back, color: Colors.white),
+          )
+        ],
       ),
     );
   }

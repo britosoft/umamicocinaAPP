@@ -10,6 +10,7 @@ class Send_order extends StatelessWidget {
     return SafeArea(
         child: Scaffold(
             body: Container(
+      color: Colors.black12,
       width: double.infinity,
       margin: EdgeInsets.symmetric(vertical: 20, horizontal: 5),
       child: Column(
@@ -21,7 +22,7 @@ class Send_order extends StatelessWidget {
           ContainerFormaPago(),
           SizedBox(height: 5),
           ContainerDireccion(),
-          SizedBox(height: 5),
+          SizedBox(height: 10),
           _EnviarPedido()
         ],
       ),
@@ -37,8 +38,15 @@ class ContainerOrder extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 15),
       decoration: BoxDecoration(
-          color: Color.fromRGBO(128, 128, 128, 0.5),
-          borderRadius: BorderRadius.circular(15)),
+        borderRadius: BorderRadius.circular(15),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black12,
+            offset: Offset(0, 4),
+            blurRadius: 3,
+          )
+        ],
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -63,8 +71,15 @@ class ContainerFormaPago extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 15),
       decoration: BoxDecoration(
-          color: Color.fromRGBO(128, 128, 128, 0.5),
-          borderRadius: BorderRadius.circular(15)),
+        borderRadius: BorderRadius.circular(15),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black12,
+            offset: Offset(0, 4),
+            blurRadius: 3,
+          )
+        ],
+      ),
       child: Column(
         children: [TituloFormaPago(), FormaDe_Pago()],
       ),
@@ -206,8 +221,15 @@ class ContainerDireccion extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 15),
       decoration: BoxDecoration(
-          color: Color.fromRGBO(128, 128, 128, 0.5),
-          borderRadius: BorderRadius.circular(15)),
+        borderRadius: BorderRadius.circular(15),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black12,
+            offset: Offset(0, 4),
+            blurRadius: 3,
+          )
+        ],
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -255,8 +277,8 @@ class _EnviarPedido extends StatelessWidget {
             child: Column(
               children: [
                 MaterialButton(
-                    onPressed: () => Navigator.pushNamed(context, 'sendOrder'),
-                    child: const Text('Continuar',
+                    onPressed: () => Navigator.pushNamed(context, 'send'),
+                    child: const Text('Enviar',
                         style: TextStyle(color: Colors.white))),
               ],
             )));
