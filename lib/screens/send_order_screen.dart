@@ -10,7 +10,6 @@ class Send_order extends StatelessWidget {
     return SafeArea(
         child: Scaffold(
             body: Container(
-      color: Colors.black12,
       width: double.infinity,
       margin: EdgeInsets.symmetric(vertical: 20, horizontal: 5),
       child: Column(

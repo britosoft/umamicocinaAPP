@@ -1,122 +1,97 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:umamicocina/providers/login_form_provider.dart';
-import 'package:umamicocina/ui/input_decorations.dart';
-import 'package:umamicocina/widgets/widgets.dart';
+import 'package:flutter/services.dart';
+import 'package:umamicocina/widgets/bnt_ingresar.dart';
+import 'package:umamicocina/widgets/custom_input.dart';
+import 'package:umamicocina/widgets/custom_labels.dart';
+import 'package:umamicocina/widgets/custom_logo.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: AuthBackground(
-            child: SingleChildScrollView(
-      child: Column(
-        children: [
-          SizedBox(height: 250),
-          CardContainer(
+      backgroundColor: Color(0xffF2F2F2),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Center(
               child: Column(
-            children: [
-              SizedBox(height: 10),
-              Text('Login', style: Theme.of(context).textTheme.headline4),
-              SizedBox(height: 30),
-              ChangeNotifierProvider(
-                  create: (_) => LoginFormProvider(), child: _LoginForm())
-            ],
-          )),
-          SizedBox(height: 50),
-          TextButton(
-            onPressed: () =>
-                Navigator.pushReplacementNamed(context, 'register'),
-            style: ButtonStyle(
-                overlayColor:
-                    MaterialStateProperty.all(Colors.green.withOpacity(0.1)),
-                shape: MaterialStateProperty.all(StadiumBorder())),
-            child: Text('Crear una nueva cuenta',
-                style: TextStyle(fontSize: 18, color: Colors.black87)),
-          ),
-          SizedBox(height: 50),
-        ],
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                logo(),
+                _Form(),
+                Labels(),
+                SizedBox(
+                  height: 70,
+                ),
+                Text('Términos y condiciones',
+                    style: TextStyle(fontWeight: FontWeight.w200)),
+              ])),
+        ),
       ),
-    )));
+    );
   }
 }
 
-class _LoginForm extends StatelessWidget {
+class logo extends StatelessWidget {
+  const logo({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    final loginForm = Provider.of<LoginFormProvider>(context);
-
-    return Container(
-      child: Form(
-        //TODO mantener la referencia al key
-        key: loginForm.formKey,
-        autovalidateMode: AutovalidateMode.onUserInteraction,
+    return Center(
+      child: Container(
+        width: 170,
+        margin: EdgeInsets.only(top: 50),
         child: Column(
-          children: [
-            TextFormField(
-              autocorrect: false,
-              keyboardType: TextInputType.emailAddress,
-              decoration: InputDecorations.authInputDecoration(
-                hintText: 'Ramonbrito105@gmail.com',
-                labelText: 'correo eletrónico',
-                prefixIcon: Icons.alternate_email_rounded,
-              ),
-              onChanged: (value) => loginForm.email = value,
-              validator: (value) {
-                String pattern =
-                    r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-
-                RegExp regExp = new RegExp(pattern);
-
-                return regExp.hasMatch(value ?? '')
-                    ? null
-                    : 'El valor ingresado no luce como un correo';
-              },
-            ),
-            SizedBox(height: 30),
-            TextFormField(
-              autocorrect: false,
-              obscureText: true,
-              keyboardType: TextInputType.emailAddress,
-              decoration: InputDecorations.authInputDecoration(
-                hintText: '******',
-                labelText: 'Contraseña',
-                prefixIcon: Icons.lock_outline,
-              ),
-              onChanged: (value) => loginForm.password = value,
-              validator: (value) {
-                return (value != null && value.length >= 6)
-                    ? null
-                    : 'La contraseña debe ser igual o mayor a 6 caráteres';
-              },
-            ),
-            SizedBox(height: 30),
-            MaterialButton(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)),
-                disabledColor: Colors.grey,
-                elevation: 0,
-                color: Colors.green,
-                child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 80, vertical: 15),
-                    child: Text(loginForm.isLoading ? 'Espere...' : 'Ingresar',
-                        style: TextStyle(color: Colors.white))),
-                onPressed: loginForm.isLoading
-                    ? null
-                    : () async {
-                        FocusScope.of(context).unfocus();
-                        if (!loginForm.isValidForm()) return;
-
-                        loginForm.isLoading = true;
-                        await Future.delayed(Duration(seconds: 2));
-                        //TODO validar si el login es correcto
-                        loginForm.isLoading = false;
-
-                        Navigator.pushReplacementNamed(context, 'home');
-                      })
-          ],
+          children: [Custom_logo()],
         ),
       ),
+    );
+  }
+}
+
+class _Form extends StatefulWidget {
+  @override
+  __FormState createState() => __FormState();
+}
+
+class __FormState extends State<_Form> {
+  final emailCtrl = TextEditingController();
+  final passCtrl = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        child: Column(children: <Widget>[
+      CustomInput(
+        icon: Icons.mail_outline,
+        placeholder: 'Corrreo',
+        keyboardType: TextInputType.emailAddress,
+        textController: emailCtrl,
+      ),
+      CustomInput(
+        icon: Icons.lock_outline,
+        placeholder: 'password',
+        isPassword: true,
+        textController: passCtrl,
+      ),
+      SizedBox(height: 10),
+      btn_enviar(
+          text: 'Ingresar',
+          onPressed: () {
+            print(emailCtrl.text);
+            print(passCtrl.text);
+          })
+    ]));
+  }
+}
+
+class Labels extends StatelessWidget {
+  const Labels({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(children: [CustomLabels()]),
     );
   }
 }
