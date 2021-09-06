@@ -1,121 +1,87 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:umamicocina/providers/login_form_provider.dart';
-import 'package:umamicocina/ui/input_decorations.dart';
-import 'package:umamicocina/widgets/widgets.dart';
+import 'package:flutter/services.dart';
+import 'package:umamicocina/widgets/bnt_ingresar.dart';
+import 'package:umamicocina/widgets/custom_input.dart';
+import 'package:umamicocina/widgets/custom_labels.dart';
+import 'package:umamicocina/widgets/custom_logo.dart';
 
-class RegisterScreen extends StatelessWidget {
+class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: AuthBackground(
-            child: SingleChildScrollView(
-      child: Column(
-        children: [
-          SizedBox(height: 250),
-          CardContainer(
+        backgroundColor: Color(0xffF2F2F2),
+        body: SafeArea(
+          child: SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
+            child: Container(
+              // height: LcW5MfbLwHayuHRL2jJeQN8AXGWC4Bv6Xk * 0.9,
               child: Column(
-            children: [
-              SizedBox(height: 10),
-              Text('Crear  cuenta',
-                  style: Theme.of(context).textTheme.headline4),
-              SizedBox(height: 30),
-              ChangeNotifierProvider(
-                  create: (_) => LoginFormProvider(), child: _LoginForm())
-            ],
-          )),
-          SizedBox(height: 50),
-          TextButton(
-            onPressed: () => Navigator.pushReplacementNamed(context, 'login'),
-            style: ButtonStyle(
-                overlayColor:
-                    MaterialStateProperty.all(Colors.green.withOpacity(0.1)),
-                shape: MaterialStateProperty.all(StadiumBorder())),
-            child: Text('¿Ya tienes una cuenta?',
-                style: TextStyle(fontSize: 18, color: Colors.black87)),
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Logo(titulo: 'Registro'),
+                  _Form(),
+                  Labels(
+                    ruta: 'login',
+                    titulo: '¿Ya tienes una cuenta?',
+                    subTitulo: 'Ingresa ahora!',
+                  ),
+                  Text(
+                    'Términos y condiciones de uso',
+                    style: TextStyle(fontWeight: FontWeight.w200),
+                  )
+                ],
+              ),
+            ),
           ),
-          SizedBox(height: 50)
-        ],
-      ),
-    )));
+        ));
   }
 }
 
-class _LoginForm extends StatelessWidget {
+class _Form extends StatefulWidget {
+  @override
+  __FormState createState() => __FormState();
+}
+
+class __FormState extends State<_Form> {
+  final nameCtrl = TextEditingController();
+  final emailCtrl = TextEditingController();
+  final passCtrl = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
-    final loginForm = Provider.of<LoginFormProvider>(context);
-
     return Container(
-      child: Form(
-        //TODO mantener la referencia al key
-        key: loginForm.formKey,
-        autovalidateMode: AutovalidateMode.onUserInteraction,
-        child: Column(
-          children: [
-            TextFormField(
-              autocorrect: false,
-              keyboardType: TextInputType.emailAddress,
-              decoration: InputDecorations.authInputDecoration(
-                hintText: 'Ramonbrito105@gmail.com',
-                labelText: 'correo eletrónico',
-                prefixIcon: Icons.alternate_email_rounded,
-              ),
-              onChanged: (value) => loginForm.email = value,
-              validator: (value) {
-                String pattern =
-                    r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-
-                RegExp regExp = new RegExp(pattern);
-
-                return regExp.hasMatch(value ?? '')
-                    ? null
-                    : 'El valor ingresado no luce como un correo';
-              },
-            ),
-            SizedBox(height: 30),
-            TextFormField(
-              autocorrect: false,
-              obscureText: true,
-              keyboardType: TextInputType.emailAddress,
-              decoration: InputDecorations.authInputDecoration(
-                hintText: '******',
-                labelText: 'Contraseña',
-                prefixIcon: Icons.lock_outline,
-              ),
-              onChanged: (value) => loginForm.password = value,
-              validator: (value) {
-                return (value != null && value.length >= 6)
-                    ? null
-                    : 'La contraseña debe ser igual o mayor a 6 caráteres';
-              },
-            ),
-            SizedBox(height: 30),
-            MaterialButton(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)),
-                disabledColor: Colors.grey,
-                elevation: 0,
-                color: Colors.green,
-                child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 80, vertical: 15),
-                    child: Text(loginForm.isLoading ? 'Espere...' : 'Ingresar',
-                        style: TextStyle(color: Colors.white))),
-                onPressed: loginForm.isLoading
-                    ? null
-                    : () async {
-                        FocusScope.of(context).unfocus();
-                        if (!loginForm.isValidForm()) return;
-
-                        loginForm.isLoading = true;
-                        await Future.delayed(Duration(seconds: 2));
-                        //TODO validar si el login es correcto
-                        loginForm.isLoading = false;
-
-                        Navigator.pushReplacementNamed(context, 'home');
-                      })
-          ],
-        ),
+      margin: EdgeInsets.only(top: 40),
+      padding: EdgeInsets.symmetric(horizontal: 10),
+      child: Column(
+        children: <Widget>[
+          CustomInput(
+            icon: Icons.perm_identity,
+            placeholder: 'Nombre',
+            keyboardType: TextInputType.text,
+            textController: nameCtrl,
+          ),
+          CustomInput(
+            icon: Icons.mail_outline,
+            placeholder: 'Correo',
+            keyboardType: TextInputType.emailAddress,
+            textController: emailCtrl,
+          ),
+          CustomInput(
+            icon: Icons.lock_outline,
+            placeholder: 'Contraseña',
+            textController: passCtrl,
+            isPassword: true,
+          ),
+          SizedBox(height: 15),
+          btn_enviar(
+            text: 'Ingrese',
+            onPressed: () {
+              print(emailCtrl.text);
+              print(passCtrl.text);
+            },
+          )
+        ],
       ),
     );
   }

@@ -1,24 +1,37 @@
 import 'package:flutter/material.dart';
 
-class CustomLabels extends StatelessWidget {
-  const CustomLabels({Key? key}) : super(key: key);
+class Labels extends StatelessWidget {
+  final String ruta;
+  final String titulo;
+  final String subTitulo;
+
+  const Labels({
+    required this.ruta,
+    required this.titulo,
+    required this.subTitulo,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Column(
-        children: [
-          Text('¿Aún no tienes cuenta?',
+        children: <Widget>[
+          Text(this.titulo,
               style: TextStyle(
+                  color: Colors.black54,
                   fontSize: 15,
-                  fontWeight: FontWeight.w300,
-                  color: Colors.black54)),
+                  fontWeight: FontWeight.w300)),
           SizedBox(height: 10),
-          Text('Crear una cuenta',
-              style: TextStyle(
-                  color: Colors.green,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold))
+          GestureDetector(
+            child: Text(this.subTitulo,
+                style: TextStyle(
+                    color: Colors.green,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold)),
+            onTap: () {
+              Navigator.pushReplacementNamed(context, this.ruta);
+            },
+          )
         ],
       ),
     );
