@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Ruta Umami ',
-        initialRoute: 'register',
+        initialRoute: 'login',
         routes: {
           'login': (_) => LoginPage(),
           'home': (_) => HomeScreen(),
