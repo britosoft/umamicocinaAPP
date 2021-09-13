@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import 'package:umamicocina/services/auth_services.dart';
 import 'package:umamicocina/widgets/bnt_ingresar.dart';
 import 'package:umamicocina/widgets/custom_input.dart';
 import 'package:umamicocina/widgets/custom_labels.dart';
@@ -72,6 +74,9 @@ class __FormState extends State<_Form> {
             onPressed: () {
               print(emailCtrl.text);
               print(passCtrl.text);
+              final authService =
+                  Provider.of<AuthService>(context, listen: false);
+              authService.login(emailCtrl.text, passCtrl.text);
             },
           )
         ],

@@ -7,11 +7,12 @@ const { validatrJWT } = require('../middlewares/validar-jwt');
 const { validarCampos } = require('../middlewares/validar_campos');
 
 const router = Router();
-
+//validar emal y password del registro
 router.post('/new',[
     check('email', 'El email es obligatorio').not().isEmpty(),
     check('email', 'Este no es un email válido').isEmail(),
-    check('password', 'El password es obligatorio').not().isEmpty(),
+    check('password', 'El password es obligatorio').not().isEmpty(), 
+  
     validarCampos
 ], crearUsuario);
 
