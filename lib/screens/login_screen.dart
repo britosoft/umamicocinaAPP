@@ -70,15 +70,14 @@ class __FormState extends State<_Form> {
           ),
           SizedBox(height: 15),
           btn_enviar(
-            text: 'Ingrese',
-            onPressed: () {
-              print(emailCtrl.text);
-              print(passCtrl.text);
-              final authService =
-                  Provider.of<AuthService>(context, listen: false);
-              authService.login(emailCtrl.text, passCtrl.text);
-            },
-          )
+              text: 'Ingrese',
+              onPressed: () {
+                print(emailCtrl.text);
+                print(passCtrl.text);
+                final authService =
+                    Provider.of<AuthService>(context, listen: false);
+                authService.login(emailCtrl.text, passCtrl.text);
+              })
         ],
       ),
     );

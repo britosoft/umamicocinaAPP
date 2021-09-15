@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:umamicocina/screens/asking_screen.dart';
 import 'package:umamicocina/screens/checoutPedido_Screen.dart';
+import 'package:umamicocina/screens/loading_screen.dart';
 import 'package:umamicocina/screens/mis_pedidosScreen.dart';
 import 'package:umamicocina/screens/order_send.dart';
 import 'package:umamicocina/screens/product_screen.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Ruta Umami ',
-        initialRoute: 'login',
+        initialRoute: 'loading',
         routes: {
           'login': (_) => LoginPage(),
           'home': (_) => HomeScreen(),
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
           'sendOrder': (_) => Send_order(),
           'managerproduct': (_) => Manager_productScreen(),
           'addproduct': (_) => AddProduct(),
+          'loading': (_) => loading(),
           'send': (_) => Send()
         },
         theme: ThemeData.light()
