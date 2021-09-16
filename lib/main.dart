@@ -10,11 +10,22 @@ import 'package:umamicocina/screens/screen.dart';
 import 'package:umamicocina/screens/formaDePago_screen.dart';
 import 'package:umamicocina/screens/send_order_screen.dart';
 import 'package:umamicocina/services/auth_services.dart';
+import 'package:umamicocina/services/product_service.dart';
 import 'package:umamicocina/widgets/manager_producto_screen.dart';
 import 'package:umamicocina/widgets/widgets.dart';
 import 'package:umamicocina/widgets/custom_input.dart';
 
 void main() => runApp(MyApp());
+
+class AppState extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MultiProvider(
+      providers: [ChangeNotifierProvider(create: (_) => ProductsService())],
+      child: MyApp(),
+    );
+  }
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -26,7 +37,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Ruta Umami ',
-        initialRoute: 'loading',
+        initialRoute: 'home',
         routes: {
           'login': (_) => LoginPage(),
           'home': (_) => HomeScreen(),

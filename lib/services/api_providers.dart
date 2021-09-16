@@ -72,6 +72,7 @@ class ApiProvider {
       return statusCode;
     }
     final decodedData = json.decode(resp.body);
+
     return decodedData;
   }
 

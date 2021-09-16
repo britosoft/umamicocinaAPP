@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import 'package:umamicocina/services/auth_services.dart';
 import 'package:umamicocina/widgets/bnt_ingresar.dart';
 import 'package:umamicocina/widgets/custom_input.dart';
 import 'package:umamicocina/widgets/custom_labels.dart';
@@ -50,6 +52,8 @@ class __FormState extends State<_Form> {
 
   @override
   Widget build(BuildContext context) {
+    final authService = Provider.of<AuthService>(context);
+
     return Container(
       margin: EdgeInsets.only(top: 40),
       padding: EdgeInsets.symmetric(horizontal: 10),
@@ -75,8 +79,9 @@ class __FormState extends State<_Form> {
           ),
           SizedBox(height: 15),
           btn_enviar(
-            text: 'Ingrese',
+            text: 'Crear cuenta',
             onPressed: () {
+              print(nameCtrl.text);
               print(emailCtrl.text);
               print(passCtrl.text);
             },

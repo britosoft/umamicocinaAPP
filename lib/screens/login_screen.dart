@@ -51,6 +51,7 @@ class __FormState extends State<_Form> {
 
   @override
   Widget build(BuildContext context) {
+    final authService = Provider.of<AuthService>(context);
     return Container(
       margin: EdgeInsets.only(top: 40),
       padding: EdgeInsets.symmetric(horizontal: 5),
@@ -72,11 +73,7 @@ class __FormState extends State<_Form> {
           btn_enviar(
               text: 'Ingrese',
               onPressed: () {
-                print(emailCtrl.text);
-                print(passCtrl.text);
-                final authService =
-                    Provider.of<AuthService>(context, listen: false);
-                authService.login(emailCtrl.text, passCtrl.text);
+                authService.login(emailCtrl.text.trim(), passCtrl.text.trim());
               })
         ],
       ),

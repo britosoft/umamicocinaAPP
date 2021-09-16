@@ -1,18 +1,18 @@
 // To parse this JSON data, do
 //
-//     final loginRespose = loginResposeFromJson(jsonString);
+//  final loginResponse = loginResponseFromJson(jsonString);
 
 import 'dart:convert';
 
 import 'package:umamicocina/models/usuario.dart';
 
-LoginRespose loginResposeFromJson(String str) =>
-    LoginRespose.fromJson(json.decode(str));
+LoginResponse loginResponseFromJson(String str) =>
+    LoginResponse.fromJson(json.decode(str));
 
-String loginResposeToJson(LoginRespose data) => json.encode(data.toJson());
+String loginResponseToJson(LoginResponse data) => json.encode(data.toJson());
 
-class LoginRespose {
-  LoginRespose({
+class LoginResponse {
+  LoginResponse({
     required this.ok,
     required this.usuario,
     required this.token,
@@ -22,7 +22,7 @@ class LoginRespose {
   Usuario usuario;
   String token;
 
-  factory LoginRespose.fromJson(Map<String, dynamic> json) => LoginRespose(
+  factory LoginResponse.fromJson(Map<String, dynamic> json) => LoginResponse(
         ok: json["ok"],
         usuario: Usuario.fromJson(json["usuario"]),
         token: json["token"],
