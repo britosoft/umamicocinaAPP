@@ -12,12 +12,9 @@ class Categoria_entradas_miProducto extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ListTile(
-              title: Text('Entradas',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-              leading: Icon(Icons.add),
-              onTap: () {
-                Navigator.pushNamed(context, 'addproduct');
-              }),
+            title: Text('Entradas',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          ),
 
           // SizedBox(height: 7),
           Expanded(

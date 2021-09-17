@@ -12,21 +12,29 @@ class MyProduct extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      body: SingleChildScrollView(
-          child: Column(
-        children: [
-          //TODO: Car product
-          CoverPageProducto(),
+            body: SingleChildScrollView(
+              child: Column(
+                children: [
+                  //TODO: Car product
+                  CoverPageProducto(),
 
-          SizedBox(height: 5),
-          Text('Mis Productos',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-          Categoria_entradas_miProducto(),
+                  SizedBox(height: 5),
+                  Text('Mis Productos ',
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                  Categoria_entradas_miProducto(),
 
-          //listado horizontal
-        ],
-      )),
-    ));
+                  //listado horizontal
+                ],
+              ),
+            ),
+            floatingActionButton: FloatingActionButton(
+              backgroundColor: Colors.green,
+              child: Icon(Icons.add_outlined, color: Colors.white),
+              onPressed: () {
+                Navigator.pushNamed(context, 'add');
+              },
+            )));
   }
 }
 
@@ -36,11 +44,12 @@ class CoverPageProducto extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     title:
     return Container(
-        width: double.infinity,
-        height: size.height * 0.3,
-        child: Stack(
-          children: [CoverPage(), IconSearch(), IconBack()],
-        ));
+      width: double.infinity,
+      height: size.height * 0.3,
+      child: Stack(
+        children: [CoverPage(), IconSearch(), IconBack()],
+      ),
+    );
   }
 }
 

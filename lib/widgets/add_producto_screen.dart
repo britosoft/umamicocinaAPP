@@ -3,8 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:umamicocina/services/product_service.dart';
 import 'package:umamicocina/widgets/product_image.dart';
 
-class Manager_productScreen extends StatelessWidget {
-  const Manager_productScreen({Key? key}) : super(key: key);
+class Add_productScreen extends StatelessWidget {
+  const Add_productScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

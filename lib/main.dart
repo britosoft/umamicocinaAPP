@@ -11,11 +11,13 @@ import 'package:umamicocina/screens/formaDePago_screen.dart';
 import 'package:umamicocina/screens/send_order_screen.dart';
 import 'package:umamicocina/services/auth_services.dart';
 import 'package:umamicocina/services/product_service.dart';
+import 'package:umamicocina/widgets/add_producto_screen.dart';
 import 'package:umamicocina/widgets/manager_producto_screen.dart';
 import 'package:umamicocina/widgets/widgets.dart';
 import 'package:umamicocina/widgets/custom_input.dart';
+import 'package:umamicocina/screens/home_screen.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(AppState());
 
 class AppState extends StatelessWidget {
   @override
@@ -52,7 +54,8 @@ class MyApp extends StatelessWidget {
           'managerproduct': (_) => Manager_productScreen(),
           'addproduct': (_) => AddProduct(),
           'loading': (_) => loading(),
-          'send': (_) => Send()
+          'send': (_) => Send(),
+          'add': (_) => Add_productScreen()
         },
         theme: ThemeData.light()
             .copyWith(appBarTheme: AppBarTheme(color: Colors.green)),

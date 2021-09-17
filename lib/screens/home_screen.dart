@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:provider/provider.dart';
+import 'package:umamicocina/services/product_service.dart';
 import 'package:umamicocina/widgets/widgets.dart';
+import 'package:umamicocina/services/services.dart';
+import 'package:umamicocina/models/models.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final productsService = Provider.of<ProductsService>(context);
+
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.green,
@@ -49,6 +56,8 @@ class HomeScreen extends StatelessWidget {
                   title: Text('Mis productos'),
                   leading: Icon(Icons.image),
                   onTap: () {
+                    //productsService.selectedProduct =
+                    // productsService.products[index].copy();
                     Navigator.pushNamed(context, 'product');
                     //Navigator.pop(context);
                   }),
